@@ -58,14 +58,14 @@ const AddTask = ({ onAddTask }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto max-w-lg space-y-8 rounded-[32px] border border-[#e8e0d8] bg-white p-10 shadow-[0_15px_40px_rgba(61,53,48,0.08)]"
+      className="mx-auto max-w-lg space-y-8 rounded-[32px] border border-[#e8e0d8] bg-amber-200 p-10 shadow-[0_15px_40px_rgba(61,53,48,0.08)]"
     >
       <div className="space-y-3 border-t-4 border-[#7d9e8c] pt-6">
-        <p className="text-xs uppercase tracking-[0.35em] text-[#a89b90]">Add Task</p>
-        <h2 className="text-3xl font-semibold tracking-[0.02em] text-[#2c2420]">
+        <p className="text-xs uppercase tracking-[0.35em] text-amber-950">Add Task</p>
+        <h2 className="text-3xl font-semibold tracking-[0.02em] text-amber-950">
           Create your next focus item
         </h2>
-        <p className="max-w-2xl text-sm leading-7 text-[#a89b90]">
+        <p className="max-w-2xl text-sm leading-7 text-amber-950">
           Write clear tasks in a calm environment with soft borders and generous spacing.
         </p>
       </div>
@@ -100,32 +100,32 @@ const AddTask = ({ onAddTask }) => {
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className={`w-full min-h-[150px] rounded-3xl border px-5 py-4 bg-[#faf7f4] text-[#3d3530] outline-none transition focus:border-[#7d9e8c] focus:ring-2 focus:ring-[#7d9e8c]/20 ${
+          className={`w-full min-h-[150px] rounded-3xl border px-5 py-4 bg-[#faf7f4] text-amber-950 outline-none transition focus:border-[#7d9e8c] focus:ring-2 focus:ring-[#7d9e8c]/20 ${
             errors.description ? 'border-[#c9a0a0]' : 'border-[#e8e0d8]'
           }`}
           placeholder="Add details for this task (minimum 20 characters)"
         />
         <div className="flex items-center justify-between text-sm">
           {errors.description ? (
-            <p className="text-[#c9a0a0]">{errors.description}</p>
+            <p className="text-amber-950">{errors.description}</p>
           ) : (
-            <span className={`text-[#a89b90] ${counterColor}`}>{descriptionLength} / 20 min</span>
+            <span className={`text-amber-950 ${counterColor}`}>{descriptionLength} / 20 min</span>
           )}
         </div>
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="status" className="text-xs font-semibold uppercase tracking-[0.28em] text-[#a89b90]">
+        <label htmlFor="status" className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-950">
           Status
         </label>
         <select
           id="status"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
-          className="w-full rounded-3xl border border-[#e8e0d8] bg-[#faf7f4] px-5 py-4 text-[#3d3530] outline-none transition focus:border-[#7d9e8c] focus:ring-2 focus:ring-[#7d9e8c]/20"
+          className="w-full rounded-3xl border border-[#e8e0d8] bg-[#faf7f4] px-5 py-4 text-amber-950 outline-none transition focus:border-[#7d9e8c] focus:ring-2 focus:ring-[#7d9e8c]/20"
         >
           {STATUS_OPTIONS.map((option) => (
-            <option key={option} value={option} className="bg-white text-[#3d3530]">
+            <option key={option} value={option} className="bg-white text-amber-950">
               {option}
             </option>
           ))}

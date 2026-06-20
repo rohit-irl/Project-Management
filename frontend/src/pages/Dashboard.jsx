@@ -19,28 +19,28 @@ const Dashboard = ({ tasks, loading, statusFilter, onFilterChange, onComplete, o
 
   return (
     <section className="space-y-8 animate-fadeIn">
-      <div className="space-y-6 rounded-[32px] border border-[#e8e0d8] bg-white p-8 shadow-[0_15px_40px_rgba(61,53,48,0.08)] sm:p-10">
+      <div className="space-y-6 rounded-[32px] border border-[#e8e0d8] bg-amber-200 p-8  sm:p-10">
         <div className="space-y-4">
-          <p className="text-sm uppercase tracking-[0.35em] text-[#a89b90]">Dashboard</p>
-          <h1 className="text-5xl font-semibold leading-tight tracking-[0.01em] text-[#2c2420]">
+          <p className="text-sm uppercase tracking-[0.35em] text-amber-950">Dashboard</p>
+          <h1 className="text-5xl font-semibold leading-tight tracking-[0.01em] text-amber-950">
             A quiet place for every task
           </h1>
-          <p className="max-w-2xl text-sm leading-7 text-[#a89b90]">
+          <p className="max-w-2xl text-sm leading-7 text-amber-950">
             Organized thoughts. Clear priorities. Peaceful progress.
           </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {stats.map((item) => (
-            <div key={item.label} className="rounded-[28px] border border-[#e8e0d8] bg-white p-5 shadow-[0_8px_20px_rgba(61,53,48,0.06)]">
+            <div key={item.label} className="rounded-[28px] border border-[#e8e0d8] bg-rose-400 p-5 shadow-[0_8px_20px_rgba(61,53,48,0.06)]">
               <div className="flex items-center justify-between gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-[#f5f2ee] text-xl text-[#7d9e8c]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-[#f5f2ee] text-xl text-amber-950">
                   {item.icon}
                 </div>
-                <span className="text-xs uppercase tracking-[0.3em] text-[#a89b90]">{item.label}</span>
+                <span className="text-xs uppercase tracking-[0.3em] text-amber-950">{item.label}</span>
               </div>
-              <p className="mt-6 text-3xl font-semibold text-[#2c2420]">
-                <span className="text-[#c9a0a0]">{item.value}</span>
+              <p className="mt-6 text-3xl font-semibold text-amber-950">
+                <span className="text-amber-950">{item.value}</span>
               </p>
             </div>
           ))}

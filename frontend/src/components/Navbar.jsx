@@ -22,7 +22,7 @@ const Navbar = ({ activeView, onViewChange }) => {
   )
 
   return (
-    <header className="rounded-[30px] border border-[#e8e0d8] bg-white px-5 py-5 shadow-[0_15px_40px_rgba(61,53,48,0.08)] sm:px-6 lg:px-8">
+    <header className="rounded-[30px] border border-[#e8e0d8] bg-amber-200 px-5 py-5 shadow-[0_15px_40px_rgba(61,53,48,0.08)] sm:px-6 lg:px-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#f5f2ee] text-[#7d9e8c] shadow-[0_8px_20px_rgba(125,158,140,0.12)]">

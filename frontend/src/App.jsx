@@ -61,7 +61,7 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-[#faf7f4] text-[#3d3530] px-4 py-8 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-rose-200 text-[#3d3530] px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl space-y-6">
           <Navbar activeView={activeView} onViewChange={setActiveView} />
 

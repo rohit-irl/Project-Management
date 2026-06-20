@@ -12,18 +12,13 @@ body,
   min-height: 100%;
 }
 
-body {
-  background: #faf7f4;
-  color: #3d3530;
-}
-
 @layer utilities {
   .animate-fadeIn {
     animation: fadeIn 0.65s ease-out both;
   }
 
-  .animate-zen-pulse {
-    animation: zenPulse 2.4s ease-in-out infinite;
+  .animate-ember-pulse {
+    animation: emberPulse 2.4s ease-in-out infinite;
   }
 
   .animate-toast-show {
@@ -49,14 +44,14 @@ body {
   }
 }
 
-@keyframes zenPulse {
+@keyframes emberPulse {
   0%,
   100% {
-    box-shadow: 0 0 12px rgba(125, 158, 140, 0.12);
+    box-shadow: 0 0 16px rgba(231, 76, 60, 0.15);
     transform: translateY(0);
   }
   50% {
-    box-shadow: 0 0 22px rgba(125, 158, 140, 0.18);
+    box-shadow: 0 0 28px rgba(231, 76, 60, 0.3);
     transform: translateY(-1px);
   }
 }
