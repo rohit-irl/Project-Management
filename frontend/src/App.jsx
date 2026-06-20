@@ -11,6 +11,7 @@ const App = () => {
   const [error, setError] = useState('')
   const [activeView, setActiveView] = useState('dashboard')
   const [statusFilter, setStatusFilter] = useState('All')
+  const [toastMessage, setToastMessage] = useState('')
 
   const loadTasks = useCallback(async (filter = statusFilter) => {
     setLoading(true)
@@ -30,6 +31,12 @@ const App = () => {
     loadTasks()
   }, [loadTasks])
 
+  useEffect(() => {
+    if (!toastMessage) return
+    const timer = setTimeout(() => setToastMessage(''), 3200)
+    return () => clearTimeout(timer)
+  }, [toastMessage])
+
   const handleFilterChange = (filter) => {
     setStatusFilter(filter)
     loadTasks(filter)
@@ -39,6 +46,7 @@ const App = () => {
     const response = await addTask(taskData)
     setTasks((current) => [response.data, ...current])
     setActiveView('dashboard')
+    setToastMessage('Task created successfully.')
   }
 
   const handleCompleteTask = async (taskId) => {
@@ -53,28 +61,37 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 px-4 py-8 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[#faf7f4] text-[#3d3530] px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl space-y-6">
           <Navbar activeView={activeView} onViewChange={setActiveView} />
 
+          {toastMessage && (
+            <div className="fixed right-5 top-5 z-50 w-full max-w-xs rounded-3xl border-l-4 border-[#7d9e8c] bg-white p-4 text-sm text-[#3d3530] shadow-[0_18px_50px_rgba(61,53,48,0.12)] animate-toast-show">
+              <p className="font-semibold">{toastMessage}</p>
+            </div>
+          )}
+
           {error && (
-            <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-300">
+            <div className="rounded-3xl border border-[#e8e0d8] bg-white px-4 py-3 text-sm text-[#3d3530] shadow-[0_18px_50px_rgba(61,53,48,0.08)]">
               {error}
             </div>
           )}
 
-          {activeView === 'dashboard' ? (
-            <Dashboard
-              tasks={tasks}
-              loading={loading}
-              statusFilter={statusFilter}
-              onFilterChange={handleFilterChange}
-              onComplete={handleCompleteTask}
-              onDelete={handleDeleteTask}
-            />
-          ) : (
-            <AddTask onAddTask={handleAddTask} />
-          )}
+          <main className="space-y-6 animate-fadeIn">
+            {activeView === 'dashboard' ? (
+              <Dashboard
+                tasks={tasks}
+                loading={loading}
+                statusFilter={statusFilter}
+                onFilterChange={handleFilterChange}
+                onComplete={handleCompleteTask}
+                onDelete={handleDeleteTask}
+                onViewChange={setActiveView}
+              />
+            ) : (
+              <AddTask onAddTask={handleAddTask} />
+            )}
+          </main>
         </div>
       </div>
     </ThemeProvider>

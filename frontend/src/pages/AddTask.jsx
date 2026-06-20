@@ -52,79 +52,80 @@ const AddTask = ({ onAddTask }) => {
     }
   }
 
+  const descriptionLength = description.trim().length
+  const counterColor = descriptionLength < 20 ? 'text-[#c9a0a0]' : 'text-[#7d9e8c]'
+
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto max-w-2xl space-y-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8"
+      className="mx-auto max-w-lg space-y-8 rounded-[32px] border border-[#e8e0d8] bg-white p-10 shadow-[0_15px_40px_rgba(61,53,48,0.08)]"
     >
-      <div>
-        <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">Create New Task</h2>
-        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-          Add a task with a clear title and detailed description.
+      <div className="space-y-3 border-t-4 border-[#7d9e8c] pt-6">
+        <p className="text-xs uppercase tracking-[0.35em] text-[#a89b90]">Add Task</p>
+        <h2 className="text-3xl font-semibold tracking-[0.02em] text-[#2c2420]">
+          Create your next focus item
+        </h2>
+        <p className="max-w-2xl text-sm leading-7 text-[#a89b90]">
+          Write clear tasks in a calm environment with soft borders and generous spacing.
         </p>
       </div>
 
       {submitError && (
-        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-300">
+        <div className="rounded-3xl border border-[#e8e0d8] bg-white px-4 py-3 text-sm text-[#3d3530] shadow-[0_15px_30px_rgba(61,53,48,0.08)]">
           {submitError}
         </div>
       )}
 
-      <div>
-        <label htmlFor="title" className="block text-sm font-medium text-slate-700 dark:text-slate-200">
-          Task Title <span className="text-red-500">*</span>
+      <div className="space-y-2">
+        <label htmlFor="title" className="text-xs font-semibold uppercase tracking-[0.28em] text-[#a89b90]">
+          Task Title <span className="text-[#c9a0a0]">*</span>
         </label>
         <input
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className={`mt-2 w-full rounded-2xl border bg-slate-50 px-4 py-3 text-slate-900 outline-none focus:ring-2 dark:bg-slate-800 dark:text-slate-100 ${
-            errors.title
-              ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
-              : 'border-slate-300 focus:border-slate-500 focus:ring-slate-200 dark:border-slate-700'
+          className={`w-full rounded-3xl border px-5 py-4 bg-[#faf7f4] text-[#3d3530] outline-none transition focus:border-[#7d9e8c] focus:ring-2 focus:ring-[#7d9e8c]/20 ${
+            errors.title ? 'border-[#c9a0a0]' : 'border-[#e8e0d8]'
           }`}
           placeholder="Enter a task title"
         />
-        {errors.title && <p className="mt-1 text-sm text-red-600">{errors.title}</p>}
+        {errors.title && <p className="text-sm text-[#c9a0a0]">{errors.title}</p>}
       </div>
 
-      <div>
-        <label htmlFor="description" className="block text-sm font-medium text-slate-700 dark:text-slate-200">
-          Description <span className="text-red-500">*</span>
+      <div className="space-y-2">
+        <label htmlFor="description" className="text-xs font-semibold uppercase tracking-[0.28em] text-[#a89b90]">
+          Description <span className="text-[#c9a0a0]">*</span>
         </label>
         <textarea
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className={`mt-2 w-full min-h-[120px] rounded-2xl border bg-slate-50 px-4 py-3 text-slate-900 outline-none focus:ring-2 dark:bg-slate-800 dark:text-slate-100 ${
-            errors.description
-              ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
-              : 'border-slate-300 focus:border-slate-500 focus:ring-slate-200 dark:border-slate-700'
+          className={`w-full min-h-[150px] rounded-3xl border px-5 py-4 bg-[#faf7f4] text-[#3d3530] outline-none transition focus:border-[#7d9e8c] focus:ring-2 focus:ring-[#7d9e8c]/20 ${
+            errors.description ? 'border-[#c9a0a0]' : 'border-[#e8e0d8]'
           }`}
           placeholder="Add details for this task (minimum 20 characters)"
         />
-        <div className="mt-1 flex items-center justify-between">
+        <div className="flex items-center justify-between text-sm">
           {errors.description ? (
-            <p className="text-sm text-red-600">{errors.description}</p>
+            <p className="text-[#c9a0a0]">{errors.description}</p>
           ) : (
-            <span />
+            <span className={`text-[#a89b90] ${counterColor}`}>{descriptionLength} / 20 min</span>
           )}
-          <span className="text-xs text-slate-400">{description.trim().length} / 20 min</span>
         </div>
       </div>
 
-      <div>
-        <label htmlFor="status" className="block text-sm font-medium text-slate-700 dark:text-slate-200">
+      <div className="space-y-2">
+        <label htmlFor="status" className="text-xs font-semibold uppercase tracking-[0.28em] text-[#a89b90]">
           Status
         </label>
         <select
           id="status"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
-          className="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+          className="w-full rounded-3xl border border-[#e8e0d8] bg-[#faf7f4] px-5 py-4 text-[#3d3530] outline-none transition focus:border-[#7d9e8c] focus:ring-2 focus:ring-[#7d9e8c]/20"
         >
           {STATUS_OPTIONS.map((option) => (
-            <option key={option} value={option}>
+            <option key={option} value={option} className="bg-white text-[#3d3530]">
               {option}
             </option>
           ))}
@@ -134,9 +135,9 @@ const AddTask = ({ onAddTask }) => {
       <button
         type="submit"
         disabled={submitting}
-        className="inline-flex w-full items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200 sm:w-auto"
+        className="inline-flex w-full items-center justify-center rounded-full bg-[#7d9e8c] px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-white shadow-[0_15px_40px_rgba(125,158,140,0.18)] transition hover:bg-[#6b8f7a] active:scale-95 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {submitting ? 'Creating...' : 'Add Task'}
+        {submitting ? 'Saving Task...' : 'Add Task'}
       </button>
     </form>
   )

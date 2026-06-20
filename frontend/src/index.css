@@ -1,3 +1,73 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: #faf7f4;
+  color: #3d3530;
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.65s ease-out both;
+  }
+
+  .animate-zen-pulse {
+    animation: zenPulse 2.4s ease-in-out infinite;
+  }
+
+  .animate-toast-show {
+    animation: toastIn 0.5s ease forwards;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zenPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(125, 158, 140, 0.12);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(125, 158, 140, 0.18);
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(20px, -15px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
