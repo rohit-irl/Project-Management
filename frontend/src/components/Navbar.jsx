@@ -1,7 +1,6 @@
 import React from 'react'
 import { useTheme } from '../context/ThemeContext'
 
-// Navbar contains navigation controls and the dark mode toggle.
 const Navbar = ({ activeView, onViewChange }) => {
   const { theme, toggleTheme } = useTheme()
 

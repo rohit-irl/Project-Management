@@ -1,6 +1,5 @@
 import React from 'react'
 
-// Loader shows a simple loading indicator while data is being fetched.
 const Loader = () => {
   return (
     <div className="flex items-center justify-center py-10">

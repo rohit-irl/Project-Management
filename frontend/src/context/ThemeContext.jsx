@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
-// ThemeContext manages light/dark mode across the React frontend.
 const ThemeContext = createContext()
 
 export const ThemeProvider = ({ children }) => {

@@ -1,15 +1,20 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(
-      process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/task-manager'
-    );
-    console.log(`MongoDB connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error('MongoDB connection failed:', error);
-    process.exit(1);
-  }
-};
+  const uri = process.env.MONGODB_URI
 
-export default connectDB;
+  if (!uri) {
+    console.error('MONGODB_URI is missing. Add it to backend/.env')
+    process.exit(1)
+  }
+
+  try {
+    const conn = await mongoose.connect(uri)
+    console.log(`MongoDB connected: ${conn.connection.host}`)
+  } catch (error) {
+    console.error('MongoDB connection failed:', error.message)
+    process.exit(1)
+  }
+}
+
+export default connectDB
